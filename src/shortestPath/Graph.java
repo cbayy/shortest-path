@@ -1,8 +1,11 @@
 package shortestPath;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Graph {
 
-    private int adjMatrix[][];
+    int adjMatrix[][];
     int vertices;
 
     public void addEdge(int v, int w, int d){
@@ -14,7 +17,7 @@ public class Graph {
 
         boolean known[] = new boolean[vertices];
         int distance[] = new int[vertices];
-        int previous[] = new int[vertices];
+        Integer previous[] = new Integer[vertices];
 
         /*
         Initialise each of the arrays with their starting values.
@@ -22,7 +25,7 @@ public class Graph {
         for(int i = 0; i < vertices; i++){
             known[i] = false;
             distance[i] = Integer.MAX_VALUE;
-            previous[i] = Integer.parseInt(null);
+            previous[i] = null;
         }
         distance[source] = 0;
 
@@ -34,13 +37,14 @@ public class Graph {
                 if(adjMatrix[smallest][j] > 0){
                     int newD = adjMatrix[smallest][j] + distance[smallest];
 
-                    if(newD > distance[j]){
+                    if(newD < distance[j]){
                         distance[j] = newD;
                         previous[j] = smallest;
                     }
                 }
             }
         }
+        printInfo(source, distance, previous);
     }
 
     int smallestDistance(boolean s[], int d[]){
@@ -54,6 +58,36 @@ public class Graph {
             }
         }
         return vertex;
+    }
+
+    public void printInfo(int source, int[] key, Integer[] prev){
+        for (int i = 0; i < vertices; i++){
+            System.out.print("Shortest path to " + i + ":");
+            printRoute(source, i, prev);
+            System.out.println(": cost = " + key[i]);
+        }
+    }
+
+    public void printRoute(int source, int dest, Integer prev[]){
+        ArrayList route = new ArrayList();
+        prev[source] = source;
+        int j = dest;
+
+        if(j != source){route.add(j);}
+        boolean end = false;
+        while (end==false) {
+            j = prev[j];
+            route.add(j);
+            if (j != prev[source]) {
+            } else {
+                end = true;
+            }
+        }
+        Collections.reverse(route);
+        route.forEach((n) ->{
+            System.out.print(" " + n);
+        });
+
     }
 
 }
