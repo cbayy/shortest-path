@@ -63,8 +63,12 @@ public class Graph {
     public void printInfo(int source, int[] key, Integer[] prev){
         for (int i = 0; i < vertices; i++){
             System.out.print("Shortest path to " + i + ":");
-            printRoute(source, i, prev);
-            System.out.println(": cost = " + key[i]);
+            try {
+                printRoute(source, i, prev);
+                System.out.println(": cost = " + key[i]);
+            }catch (NullPointerException ex){
+                System.out.println(" No valid route found");
+            }
         }
     }
 
