@@ -43,6 +43,7 @@ public class GraphPanel extends JPanel {
                     if(adjMatrix[i][j] > 0) {
                         g.setColor(Color.red);
                         g2D.drawLine(edgePos[i][0], edgePos[i][1], edgePos[j][0], edgePos[j][1]);
+                        g2D.drawString(String.valueOf(adjMatrix[i][j]),(edgePos[i][0] + edgePos[j][0])/2, (edgePos[i][1] + edgePos[j][1])/2 );
                     }
                 }
             }
