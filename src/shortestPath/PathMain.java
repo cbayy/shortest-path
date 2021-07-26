@@ -66,7 +66,6 @@ public class PathMain {
          */
         g.addEdge(0,1,18);
         g.addEdge(0,2,12);
-        g.addEdge(1,0,22);
         g.addEdge(1,3,6);
         g.addEdge(2,1,16);
         g.addEdge(2,3,14);
