@@ -1,5 +1,6 @@
 package shortestPath;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -7,6 +8,11 @@ public class Graph {
 
     int adjMatrix[][];
     int vertices;
+    JTextArea txtArea;
+
+    Graph(JTextArea textArea){
+        txtArea = textArea;
+    }
 
     public void addEdge(int v, int w, int d){
         adjMatrix[v][w] = d;
@@ -63,11 +69,14 @@ public class Graph {
     public void printInfo(int source, int[] key, Integer[] prev){
         for (int i = 0; i < vertices; i++){
             System.out.print("Shortest path to " + i + ":");
+            txtArea.append("Shortest path to " + i + ":");
             try {
                 printRoute(source, i, prev);
                 System.out.println(": cost = " + key[i]);
+                txtArea.append(": cost = " + key[i] + "\n");
             }catch (NullPointerException ex){
                 System.out.println(" No valid route found");
+                txtArea.append(" No valid route found\n");
             }
         }
     }
@@ -90,6 +99,7 @@ public class Graph {
         Collections.reverse(route);
         route.forEach((n) ->{
             System.out.print(" " + n);
+            txtArea.append(" " + n);
         });
 
     }

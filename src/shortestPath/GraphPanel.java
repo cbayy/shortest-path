@@ -41,16 +41,16 @@ public class GraphPanel extends JPanel {
                 g2D.fillOval(xPos, yPos, 50, 50);
                 g.setColor(Color.white);
                 g2D.drawString(String.valueOf(i), xPos + 20, yPos + 20);
-                edgePos[i][0] = xPos + 25;
-                edgePos[i][1] = yPos + 25;
+                edgePos[i][0] = xPos;
+                edgePos[i][1] = yPos;
             }
             painted = true;
             for (int i = 0; i < adjMatrix.length; i++) {
                 for (int j = 0; j < adjMatrix.length; j++) {
                     if(adjMatrix[i][j] > 0) {
                         g.setColor(Color.red);
-                        g2D.drawLine(edgePos[i][0], edgePos[i][1], edgePos[j][0], edgePos[j][1]);
-                        g2D.drawString(String.valueOf(adjMatrix[i][j]),(edgePos[i][0] + edgePos[j][0])/2, (edgePos[i][1] + edgePos[j][1])/2 );
+                        g2D.drawLine(edgePos[i][0] + 25, edgePos[i][1] + 25, edgePos[j][0] + 25, edgePos[j][1] + 25);
+                        g2D.drawString(String.valueOf(adjMatrix[i][j] + 25),(edgePos[i][0] + edgePos[j][0])/2 + 25, (edgePos[i][1] + edgePos[j][1])/2 +25);
                     }
                 }
             }
