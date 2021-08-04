@@ -46,9 +46,9 @@ public class PathMain {
          */
         JTextArea textArea = new JTextArea();
         Graph g = new Graph(textArea);
-        g.adjMatrix = new int[10][10];
+        g.adjMatrix = new int[6][6];
 
-        grid(g);
+        //grid(g);
         /*
         for(String s: input){
             String[] line = s.split(" ");
@@ -58,7 +58,7 @@ public class PathMain {
             g.addEdge(v,w,d);
         }
 
-
+         */
 
         g.addEdge(0,1,18);
         g.addEdge(0,2,12);
@@ -68,7 +68,7 @@ public class PathMain {
         g.addEdge(3,0,31);
         g.addEdge(4,0,31);
         g.addEdge(0,5,2);
-        */
+
         System.out.println(g.adjMatrix.length);
         g.shortestPath(0);
         gpPanel.setAdjMatrix(g.adjMatrix);

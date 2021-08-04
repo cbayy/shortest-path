@@ -22,7 +22,7 @@ public class GraphPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-
+    try {
         Graphics2D g2D = (Graphics2D) g;
         super.paintComponent(g2D);
         if (adjMatrix != null) {
@@ -30,11 +30,11 @@ public class GraphPanel extends JPanel {
                 g.setColor(Color.darkGray);
                 int xPos = 0;
                 int yPos = 0;
-                if(painted==false) {
+                if (painted == false) {
                     Random rand = new Random();
                     xPos = rand.nextInt(800);
                     yPos = rand.nextInt(600);
-                }else{
+                } else {
                     xPos = edgePos[i][0];
                     yPos = edgePos[i][1];
                 }
@@ -47,14 +47,17 @@ public class GraphPanel extends JPanel {
             painted = true;
             for (int i = 0; i < adjMatrix.length; i++) {
                 for (int j = 0; j < adjMatrix.length; j++) {
-                    if(adjMatrix[i][j] > 0) {
+                    if (adjMatrix[i][j] > 0) {
                         g.setColor(Color.red);
                         g2D.drawLine(edgePos[i][0] + 25, edgePos[i][1] + 25, edgePos[j][0] + 25, edgePos[j][1] + 25);
-                        g2D.drawString(String.valueOf(adjMatrix[i][j] + 25),(edgePos[i][0] + edgePos[j][0])/2 + 25, (edgePos[i][1] + edgePos[j][1])/2 +25);
+                        g2D.drawString(String.valueOf(adjMatrix[i][j]), (edgePos[i][0] + edgePos[j][0]) / 2 + 25, (edgePos[i][1] + edgePos[j][1]) / 2 + 25);
                     }
                 }
             }
 
         }
+    }catch (NullPointerException ex){
+        System.out.println("Null");
+    }
     }
 }
