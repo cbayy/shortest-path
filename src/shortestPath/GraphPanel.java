@@ -11,21 +11,20 @@ public class GraphPanel extends JPanel {
     int edgePos[][];
     boolean painted = false;
 
-    public GraphPanel(){
-
-    }
-
+    //Sets the adjacency matrix based on calculated graph routes
     public void setAdjMatrix(int[][] adjMatrixNew){
         adjMatrix = adjMatrixNew;
         edgePos = new int[adjMatrix.length][2];
     }
 
+    //Function which draws the graph and the route to the screen
     @Override
     public void paintComponent(Graphics g) {
-
         Graphics2D g2D = (Graphics2D) g;
         super.paintComponent(g2D);
         if (adjMatrix != null) {
+
+            //Loops through the adjacency matrix, calculates positions on the frame for the nodes of the graph and paints them to screen
             for (int i = 0; i < adjMatrix.length; i++) {
                 g.setColor(Color.darkGray);
                 int xPos = 0;
@@ -44,6 +43,8 @@ public class GraphPanel extends JPanel {
                 edgePos[i][0] = xPos;
                 edgePos[i][1] = yPos;
             }
+
+            //Loops through the adjacency matrix and paints each edge and the weight of each edge
             painted = true;
             for (int i = 0; i < adjMatrix.length; i++) {
                 for (int j = 0; j < adjMatrix.length; j++) {
@@ -54,7 +55,6 @@ public class GraphPanel extends JPanel {
                     }
                 }
             }
-
         }
     }
 }
