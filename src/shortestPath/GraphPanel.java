@@ -30,7 +30,7 @@ public class GraphPanel extends JPanel {
                 g.setColor(Color.darkGray);
                 int xPos = 0;
                 int yPos = 0;
-                if(painted==false) {
+                if(painted==true) {
                     Random rand = new Random();
                     xPos = rand.nextInt(800);
                     yPos = rand.nextInt(600);
@@ -50,7 +50,7 @@ public class GraphPanel extends JPanel {
                     if(adjMatrix[i][j] > 0) {
                         g.setColor(Color.red);
                         g2D.drawLine(edgePos[i][0] + 25, edgePos[i][1] + 25, edgePos[j][0] + 25, edgePos[j][1] + 25);
-                        g2D.drawString(String.valueOf(adjMatrix[i][j] + 25),(edgePos[i][0] + edgePos[j][0])/2 + 25, (edgePos[i][1] + edgePos[j][1])/2 +25);
+                        g2D.drawString(String.valueOf(adjMatrix[i][j]),(edgePos[i][0] + edgePos[j][0])/2 + 25, (edgePos[i][1] + edgePos[j][1])/2 +25);
                     }
                 }
             }
