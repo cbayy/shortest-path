@@ -16,6 +16,7 @@ public class PathMain {
         pm.run();
     }
 
+    //jFrame setup
     public PathMain(){
         frame = new JFrame("Graph Visualiser");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,28 +29,27 @@ public class PathMain {
         frame.setVisible(true);
     }
 
-
     public void run(){
         Scanner in = new Scanner(System.in);
         ArrayList<String> input = new ArrayList<String>();
 
+        //Takes user input to create graph (currently using automatic graph)
         /*
         while(true){
             String text = in.nextLine();
             if(text.equals("stop")){
                 break;
             }
-
             input.add(text);
         }
-
          */
+
+        //Graph and adjacency matrix setup
         JTextArea textArea = new JTextArea();
         Graph g = new Graph(textArea);
         g.adjMatrix = new int[6][6];
 
-        //grid(g);
-
+        //Parses user input
         for(String s: input){
             String[] line = s.split(" ");
             int v = Integer.parseInt(line[0]);
@@ -58,8 +58,7 @@ public class PathMain {
             g.addEdge(v,w,d);
         }
 
-
-
+        //Adding edges/nodes/weights
         g.addEdge(0,1,18);
         g.addEdge(0,2,12);
         g.addEdge(1,3,6);
@@ -69,19 +68,17 @@ public class PathMain {
         g.addEdge(4,0,31);
         g.addEdge(0,5,2);
 
-        System.out.println(g.adjMatrix.length);
+        //Runs algorithm and prints to screen
         g.shortestPath(0);
         gpPanel.setAdjMatrix(g.adjMatrix);
         System.out.println(g.adjMatrix.length);
         frame.repaint();
         gpPanel.repaint();
-
         txtPanel.add(textArea);
-
         SwingUtilities.updateComponentTreeUI(frame);
     }
 
-
+    //Method for creating a grid graph
     public void grid(Graph g){
         int ROW = 10;
         int COL = 10;
