@@ -14,10 +14,12 @@ public class Graph {
         txtArea = textArea;
     }
 
+    //Adds new edge to adjacency matrix
     public void addEdge(int v, int w, int d){
         adjMatrix[v][w] = d;
     }
 
+    //Runs Dijkstra's algorithm to calculate the shortest path to every node in the graph
     public void shortestPath(int source){
         vertices = adjMatrix.length;
 
@@ -53,6 +55,7 @@ public class Graph {
         printInfo(source, distance, previous);
     }
 
+    //Function that loops through available edges to find shortest value
     int smallestDistance(boolean s[], int d[]){
         int min = Integer.MAX_VALUE;
         int vertex = 0;
@@ -66,6 +69,7 @@ public class Graph {
         return vertex;
     }
 
+    //Prints the shortest route to every node in the graph from source
     public void printInfo(int source, int[] key, Integer[] prev){
         for (int i = 0; i < vertices; i++){
             System.out.print("Shortest path to " + i + ":");
@@ -81,6 +85,7 @@ public class Graph {
         }
     }
 
+    //Prints out the order of nodes in a route ie. "0 1 3"
     public void printRoute(int source, int dest, Integer prev[]){
         ArrayList route = new ArrayList();
         prev[source] = source;
@@ -101,7 +106,5 @@ public class Graph {
             System.out.print(" " + n);
             txtArea.append(" " + n);
         });
-
     }
-
 }
