@@ -11,7 +11,10 @@ public class GraphPanel extends JPanel {
     int edgePos[][];
     boolean painted = false;
 
-    //Sets the adjacency matrix based on calculated graph routes
+    public GraphPanel(){
+
+    }
+
     public void setAdjMatrix(int[][] adjMatrixNew){
         adjMatrix = adjMatrixNew;
         edgePos = new int[adjMatrix.length][2];
@@ -55,6 +58,7 @@ public class GraphPanel extends JPanel {
                     }
                 }
             }
+
         }
     }
 }
